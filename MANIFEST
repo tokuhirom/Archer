@@ -1,6 +1,8 @@
+.shipit
 archer.pl
+assets/kwalify/schema.yaml
+assets/recipe/Deploy
 AUTHORS
-Build.PL
 Changes
 examples/config.yaml
 examples/test.yaml
@@ -8,7 +10,6 @@ inc/Module/AutoInstall.pm
 inc/Module/Install.pm
 inc/Module/Install/AutoInstall.pm
 inc/Module/Install/Base.pm
-inc/Module/Install/Build.pm
 inc/Module/Install/Can.pm
 inc/Module/Install/Fetch.pm
 inc/Module/Install/Include.pm
@@ -43,5 +44,8 @@ MANIFEST
 META.yml			# Will be created by "make dist"
 README
 t/00.load.t
+t/01_simple.t
+t/01_simple.yaml
 t/perlcritic.t
+t/Plugin/Dummy.pm
 t/pod.t
