@@ -83,7 +83,7 @@ sub run_hook {
             next;
         }
 
-        my $class = "Archer::Plugin::$plugin->{module}";
+        my $class = ($plugin->{module} =~ /^\+(.+)$/) ? $1 : "Archer::Plugin::$plugin->{module}";
         $self->log( 'debug' => "load $class" );
         $class->use or die $@;
 
@@ -106,11 +106,7 @@ sub run_process {
         || 'Archer::Parallel::ForkManager';
     $parallel->use or die $@;
 
-    # construct elements
-    # this one doesn't work for me
-    # my $server_tree = $self->{config}->{projects}->{$self->{project}};
-    # but this one do
-    my $server_tree = $self->{ config }->{ projects };
+    my $server_tree = $self->{config}->{projects}->{$self->{project}};
 
     my @elems;
     while ( my ( $role, $servers ) = each %$server_tree ) {

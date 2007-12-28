@@ -1,0 +1,14 @@
+global:
+  work_dir: /tmp
+
+tasks:
+  process:
+   - module: +t::Plugin::Dummy
+     name: dummy
+     config: ~
+
+projects:
+  YourProj:
+    app:
+      - 127.0.0.1
+
