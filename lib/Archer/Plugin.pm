@@ -78,7 +78,7 @@ sub check_recipe {
     }
 
     # fail
-    return undef;
+    return;
 }
 
 1;
