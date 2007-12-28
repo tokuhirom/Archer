@@ -20,7 +20,7 @@ requires 'Template'              => 0;
 requires 'Term::ANSIColor'       => 0;
 requires 'Test::More'            => 0;
 requires 'UNIVERSAL::require'    => 0;
-requires 'YAML::Syck'            => 0;
+requires 'YAML'                  => 0;
 requires 'Net::SSH'              => 0;
 requires 'Term::ReadLine'        => 0;
 requires 'IO::Prompt';

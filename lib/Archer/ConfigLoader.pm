@@ -1,7 +1,7 @@
 package Archer::ConfigLoader;
 use strict;
 use warnings;
-use YAML::Syck;
+use YAML;
 use Storable;
 use Carp;
 use Kwalify qw(validate); 
@@ -19,11 +19,11 @@ sub load {
     if (   ( !ref($stuff) && $stuff eq '-' )
         || ( -e $stuff && -r _ ) )
     {
-        $config = YAML::Syck::LoadFile($stuff);
+        $config = YAML::LoadFile($stuff);
         $context->{config_path} = $stuff if $context;
     }
     elsif ( ref($stuff) && ref($stuff) eq 'SCALAR' ) {
-        $config = YAML::Syck::Load( ${$stuff} );
+        $config = YAML::Load( ${$stuff} );
     }
     elsif ( ref($stuff) && ref($stuff) eq 'HASH' ) {
         $config = Storable::dclone($stuff);
@@ -32,7 +32,7 @@ sub load {
         croak "Archer::ConfigLoader->load: $stuff: $!";
     }
 
-    my $res = validate( YAML::Syck::LoadFile($schema_file), $config );
+    my $res = validate( YAML::LoadFile($schema_file), $config );
     $context->log( error => $res ) unless $res == 1;
 
     return $config;
