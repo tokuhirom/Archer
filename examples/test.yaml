@@ -1,0 +1,28 @@
+global:
+  work_dir: /home/miya/work
+  dest_dir: /home/miya/tmp
+
+tasks:
+  init:
+    - module: SVN::Log
+
+    - module: Confirm
+      config:
+        msg: really deploy? [y/n]
+
+    - module: SVN::Update
+
+  process:
+    - module: Rsync
+      name: rsync
+      config:
+        source: "[% work_dir %]/[% project %]"
+        dest: "[% server %]:[% dest_dir %]"
+        exclude:
+          - test
+
+projects:
+  Assurer:
+    app:
+      - mizzy.org
+

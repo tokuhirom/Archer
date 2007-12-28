@@ -1,0 +1,92 @@
+type: map
+mapping:
+  global:
+    name: global
+    desc: archer's global configuration = $self->{conf}
+    type: map
+    required: true
+    mapping:
+      "work_dir":
+        name: work_dir
+        desc: working directory
+        type: str
+        required: true
+      "dest_dir":
+        name: dest_dir
+        desc: dest. directory
+        type: str
+      "recipe":
+        name: recipe
+        desc: additional recipe path
+        type: str
+      "log":
+        name: log
+        desc: log
+        type: map
+        mapping:
+          "level":
+            name: log-level
+            desc: log-level
+            type: str
+            enum:
+              - debug
+              - warn
+              - info
+              - error
+  tasks:
+    name: tasks
+    desc: list of tests
+    type: map
+    required: true
+    mapping:
+      init:
+        type: seq
+        sequence:
+          - type: map
+            mapping:
+              "module":
+                type: str
+                required: true
+              "name":
+                type: str
+                required: true
+              "config":
+                type: any
+              "role":
+                type: str    
+      process:
+        type: seq
+        sequence:
+          - type: map
+            mapping:
+              "module":
+                type: str
+                required: true
+              "name":
+                type: str
+                required: true
+              "config":
+                type: any
+              "role":
+                type: str    
+      finalize:
+        type: seq
+        sequence:
+          - type: map
+            mapping:
+              "module":
+                type: str
+                required: true
+              "name":
+                type: str
+                required: true
+              "config":
+                type: any
+              "role":
+                type: str    
+
+  "projects":
+    name: list of projects
+    desc: list of projects
+    type: any
+    required: true

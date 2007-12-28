@@ -1,0 +1,57 @@
+global:
+  work_dir: /tmp/working_archer/
+  dest_dir: /path/to/dest/
+
+tasks:
+  init:
+    - module: Exec::Local
+      name: svnlog
+      config:
+        user: archer
+        command: "svn log -v -r`LANG=C svn info [% work_dir %]/[% project %]|perl -ne 'print $1+1 if /Revision: (\d+)/'`:HEAD [% work_dir %]/[% project %]"
+
+    - module: Exec::Local
+      name: svnup
+      config:
+        user: archer
+        command: svn up [% work_dir %]/[% project %]
+
+    - module: MySQLDiff::Sledge
+
+    - module: Confirm
+      config:
+        msg: really deploy? [y/n]
+
+  process:
+    - module: Exec::Local
+      name: rsync
+      config:
+        user: archer
+        command: |-
+             rsync -auvz --exclude=.svn/ -e ssh --delete [% work_dir %]/[% project %]/[% l_project %]/ [% server %]:[% dest_dir %]/[% l_project %]/
+             rsync -auvz --exclude=.svn/ -e ssh --delete [% work_dir %]/[% project %]/site_perl/[% project %]/ [% server %]:[% dest_dir %]/[% project %]/
+
+    - module: Exec::Remote
+      name: restart
+      config:
+        user: root
+        command: "if [ -e /etc/init.d/apache ] ; then  /etc/init.d/apache stop; sleep 6; /etc/init.d/apache start; fi"
+        role: app
+
+  finalize:
+    - module: Notify::IRC
+      name: notice
+      config:
+        template: end deploy
+
+projects:
+  Caspeee:
+    smtp:
+      - 192.168.1.3
+      - 192.168.1.7
+    cron:
+      - 192.168.1.5
+    app:
+      - 192.168.1.7
+      - 192.168.1.2
+
