@@ -180,19 +180,19 @@ __END__
 
 =head1 NAME
 
-Archer - 
-
-=head1 SYNOPSIS
-
-
+Archer - yet another deployment tool
 
 =head1 DESCRIPTION
 
+This is yet another deployment tool :)
+
 =head1 AUTHORS
 
-Tokuhiro Matsuno
+Tokuhiro Matsuno and Archer committers.
 
 =head1 TODO
 
-=cut
+=head1 SEE ALSO
+
+L<capistrano>
 
