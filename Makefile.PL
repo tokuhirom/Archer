@@ -23,6 +23,7 @@ requires 'UNIVERSAL::require'    => 0;
 requires 'YAML'                  => 0;
 requires 'Net::SSH'              => 0;
 requires 'Term::ReadLine'        => 0;
+requires 'File::Util';
 requires 'IO::Prompt';
 requires 'Kwalify';
 requires 'File::HomeDir';
