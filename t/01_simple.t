@@ -1,8 +1,11 @@
 use strict;
 use warnings;
 use Test::More tests => 1;
+
+eval "use IO::Scalar;";
+plan skip_all => 'this test requires IO::Scalar' if $@;
+
 use Archer;
-use IO::Scalar;
 use FindBin;
 
 main();
