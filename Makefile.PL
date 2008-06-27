@@ -47,6 +47,5 @@ use_test_base;
 
 install_script('archer.pl');
 
-auto_install;
 WriteAll;
 
