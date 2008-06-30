@@ -7,8 +7,16 @@ use IO::Prompt;
 sub run {
     my ($self,) = @_;
 
+    local $SIG{ALRM} = sub {
+        $self->detach("Confirm timeout");
+    };
+
     my $msg = $self->{config}->{msg} || 'do ? [y/n]';
+    my $timeout = $self->{config}->{timeout} || 0;
+    my $latest_alarm = alarm $timeout;
+
     if ( IO::Prompt::prompt( $msg, '-yn' ) ) {
+        alarm $latest_alarm;
         $self->log(debug => "yes");
     }
     else {
