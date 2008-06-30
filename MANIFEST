@@ -6,9 +6,8 @@ AUTHORS
 Changes
 examples/config.yaml
 examples/test.yaml
-inc/Module/AutoInstall.pm
 inc/Module/Install.pm
-inc/Module/Install/AutoInstall.pm
+inc/Module/Install/AuthorTests.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Can.pm
 inc/Module/Install/Fetch.pm
@@ -18,7 +17,6 @@ inc/Module/Install/Metadata.pm
 inc/Module/Install/TestBase.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
-inc/Module/Install/Scripts.pm
 inc/Spiffy.pm
 inc/Test/Base.pm
 inc/Test/Base/Filter.pm
@@ -33,6 +31,7 @@ lib/Archer/Plugin/Confirm.pm
 lib/Archer/Plugin/Exec.pm
 lib/Archer/Plugin/Exec/Local.pm
 lib/Archer/Plugin/Exec/Remote.pm
+lib/Archer/Plugin/Flock.pm
 lib/Archer/Plugin/MySQLDiff/Sledge.pm
 lib/Archer/Plugin/Rsync.pm
 lib/Archer/Plugin/SVN.pm
@@ -41,12 +40,12 @@ lib/Archer/Plugin/SVN/Log.pm
 lib/Archer/Plugin/SVN/Update.pm
 lib/Archer/Shell.pm
 Makefile.PL
-MANIFEST
-META.yml			# Will be created by "make dist"
+MANIFEST			This list of files
+META.yml
 README
 t/00.load.t
 t/01_simple.t
 t/01_simple.yaml
-t/perlcritic.t
 t/Plugin/Dummy.pm
 t/pod.t
+xt/perlcritic.t

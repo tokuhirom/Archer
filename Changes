@@ -1,5 +1,12 @@
 Revision history for Archer
 
+0.05
+
+    - Plugin::Flock: added
+    - Plugin::Confirm: support timeout
+    - Plugin::Exec::Remote: do not use sudo when does not specify user name in configuration(by mizzy++)
+    - fixed some test problem.
+
 0.04
 
     - fixed test script.
