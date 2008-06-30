@@ -8,7 +8,7 @@ sub run {
     my ($self,) = @_;
 
     local $SIG{ALRM} = sub {
-        $self->detach("Confirm timeout");
+        $self->detach("\n\nConfirm timeout\n");
     };
 
     my $msg = $self->{config}->{msg} || 'do ? [y/n]';
