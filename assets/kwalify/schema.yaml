@@ -15,6 +15,11 @@ mapping:
         name: dest_dir
         desc: dest. directory
         type: str
+      "assets_path":
+        name: assets_path
+        desc: path to assets
+        type: str
+        required: false
       "recipe":
         name: recipe
         desc: additional recipe path
