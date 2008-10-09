@@ -1,5 +1,10 @@
 Revision history for Archer
 
+0.06
+
+    - added YAML::Syck support
+    - specify assets path in config.yaml
+
 0.05
 
     - Plugin::Flock: added
