@@ -13,8 +13,7 @@ sub new { bless {}, shift }
 sub load {
     my ( $self, $stuff, $context ) = @_;
 
-    my $schema_file = file( $FindBin::Bin, 'assets', 'kwalify', 'schema.yaml' );
-
+    # load
     my $config;
     if (   ( !ref($stuff) && $stuff eq '-' )
         || ( -e $stuff && -r _ ) )
@@ -32,6 +31,12 @@ sub load {
         croak "Archer::ConfigLoader->load: $stuff: $!";
     }
 
+    # setup default value
+    $config->{global}->{assets_path} ||= file( $FindBin::Bin, 'assets')->stringify;
+    $context->log('debug' => "assets path: $config->{global}->{assets_path}");
+
+    # verify
+    my $schema_file = file( $config->{global}->{assets_path}, 'kwalify', 'schema.yaml' );
     my $res = validate( YAML::LoadFile($schema_file), $config );
     $context->log( error => $res ) unless $res == 1;
 

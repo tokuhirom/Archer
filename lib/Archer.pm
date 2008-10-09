@@ -22,7 +22,7 @@ sub new {
 
     if ( !$$opts{ write_config } ) {
         my $config_loader = Archer::ConfigLoader->new;
-        $self->{ config } = $config_loader->load( $opts->{ config_yaml } );
+        $self->{ config } = $config_loader->load( $opts->{ config_yaml }, $self );
     }
     $self->{ config }->{ global }->{ log } ||= { level => 'debug' };
 
@@ -135,7 +135,7 @@ sub bootstrap {
     return $self;
 }
 
-# TODO: use the log4perl?
+# TODO: use the Log::Dispatch?
 sub log {
     my ( $self, $level, $msg, %opt ) = @_;
 
