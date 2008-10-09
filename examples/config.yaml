@@ -1,6 +1,7 @@
 global:
   work_dir: /tmp/working_archer/
   dest_dir: /path/to/dest/
+  assets_path: /tmp/
 
 tasks:
   init:

@@ -166,8 +166,8 @@ my %levels = (
 sub should_log {
     my ( $self, $level ) = @_;
 
-    $levels{ $level }
-        >= $levels{ $self->{ config }->{ global }->{ log }->{ level } };
+    my $setting_level = $self->{config}->{global}->{log}->{level} || 'debug';
+    $levels{ $level } >= $levels{ $setting_level };
 }
 
 1;
