@@ -76,18 +76,24 @@ sub run_hook {
             next;
         }
 
-        if ( $plugin->{ role } && $plugin->{ role } ne $args->{ role } ) {
-            $self->log( debug =>
-                    "skip $args->{server}. because $plugin->{role} ne $args->{role}"
-            );
-            next;
+        for my $filter ( qw/ role project / ) {
+          if ( $plugin->{ $filter } && $plugin->{ $filter } ne $args->{ $filter } ) {
+              $self->log( debug =>
+                      "skip $args->{server}. because $plugin->{$filter} ne $args->{$filter}"
+              );
+              next;
+          }
         }
 
         my $class = ($plugin->{module} =~ /^\+(.+)$/) ? $1 : "Archer::Plugin::$plugin->{module}";
         $self->log( 'debug' => "load $class" );
         $class->use or die $@;
 
-        $self->log( 'info' => "run $class" );
+        if ( $plugin->{server} ) {
+          $self->log( 'info' => "run @{[ $plugin->{name} ]}( $class ) to @{[ $plugin->{server} ]}" );
+        } else {
+          $self->log( 'info' => "run @{[ $plugin->{name} ]}( $class )" );
+        }
         $class->new(
             {   config  => $plugin->{ config },
                 project => $self->{ project },
