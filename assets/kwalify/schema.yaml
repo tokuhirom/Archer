@@ -70,6 +70,9 @@ mapping:
               "name":
                 type: str
                 required: true
+              "skip_default":
+                type: bool
+                required: no
               "config":
                 type: any
               "role":

@@ -81,9 +81,13 @@ sub run_hook {
             next;
         }
 
-        if ( $hook eq 'process' && $self->{ only } && $self->{only} ne $plugin->{ name } ) {
-            $self->log( debug => "skipped: $plugin->{name}" );
-            next;
+        if ( $hook eq 'process' && $self->{ only } ) {
+            if ( $self->{only} ne $plugin->{ name } ) {
+                $self->log( debug => "skipped: $plugin->{name}" );
+                next;
+            }
+        } else {
+            next if ( $plugin->{skip_default} );
         }
 
         for my $filter ( qw/ role project / ) {
