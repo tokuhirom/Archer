@@ -20,6 +20,7 @@ Getopt::Long::GetOptions(
     '--para=i'       => \$fork_num,
     '--dry-run'      => \my $dry_run_fg,
     '--skip=s'       => \my $skips,
+    '--with=s'       => \my $withs,
     '--only=s'       => \my $only,
     '--shell',       => \my $shell,
     '--man'          => \my $man,
@@ -43,6 +44,7 @@ if ( !@ARGV ) {
                 dry_run_fg   => $dry_run_fg,
                 parallel_num => $fork_num,
                 skips => +{ map { $_ => 1 } split /,/, ( $skips || '' ) },
+                withs => +{ map { $_ => 1 } split /,/, ( $withs || '' ) },
                 only        => $only,
                 log_level   => $log_level,
                 config_yaml => $config,
@@ -71,6 +73,7 @@ for my $proj ( @ARGV ) {
             dry_run_fg   => $dry_run_fg,
             parallel_num => $fork_num,
             skips        => +{ map { $_ => 1 } split /,/, ( $skips || '' ) },
+            withs        => +{ map { $_ => 1 } split /,/, ( $withs || '' ) },
             only         => $only,
             log_level    => $log_level,
             config_yaml  => $config,
@@ -91,6 +94,7 @@ __END__
         --para=5                parallel run for process phase.
         --dry-run               dry-run.
         --skip=restart          skip the task(csv).
+        --with=somejob          do deploy with skip_defalt tasks.
         --only=rsync            do only specify task (only affect on process phase).
         --man                   show manual
         [--log_level=debug]     change log level from option. If you specify this, 

@@ -87,7 +87,9 @@ sub run_hook {
                 next;
             }
         } else {
-            next if ( $plugin->{skip_default} );
+            if ( $plugin->{skip_default} && ! $self->{ withs }->{ $plugin->{ name } } ) {
+                next;
+            }
         }
 
         for my $filter ( qw/ role project / ) {
