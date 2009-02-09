@@ -20,6 +20,7 @@ Getopt::Long::GetOptions(
     '--para=i'       => \$fork_num,
     '--dry-run'      => \my $dry_run_fg,
     '--skip=s'       => \my $skips,
+    '--only=s'       => \my $only,
     '--shell',       => \my $shell,
     '--man'          => \my $man,
     '--config=s'     => \$config,
@@ -41,6 +42,7 @@ if ( !@ARGV ) {
                 dry_run_fg   => $dry_run_fg,
                 parallel_num => $fork_num,
                 skips => +{ map { $_ => 1 } split /,/, ( $skips || '' ) },
+                only        => $only,
                 config_yaml => $config,
                 argv_str    => $argv_str,
                 shell       => $shell,
@@ -67,6 +69,7 @@ for my $proj ( @ARGV ) {
             dry_run_fg   => $dry_run_fg,
             parallel_num => $fork_num,
             skips        => +{ map { $_ => 1 } split /,/, ( $skips || '' ) },
+            only         => $only,
             config_yaml  => $config,
             argv_str     => $argv_str,
             shell        => $shell,
@@ -85,6 +88,7 @@ __END__
         --para=5         parallel run for process phase.
         --dry-run        dry-run.
         --skip=restart   skip the task(csv).
+        --only=rsync     do only specify task (only affect on process phase).
         --man            show manual
         --config         config.yaml path
         --shell          shell mode
