@@ -99,10 +99,10 @@ sub run_hook {
         $self->log( 'debug' => "load $class" );
         $class->use or die $@;
 
-        if ( $plugin->{server} ) {
-            $self->log( 'info' => "run @{[ $plugin->{name} ]}( $class ) to @{[ $plugin->{server} ]}" );
+        if ( $args->{server} ) {
+            $self->log( 'info' => "run @{[ $plugin->{name} ]} ( $class ) to @{[ $args->{server} ]}" );
         } else {
-            $self->log( 'info' => "run @{[ $plugin->{name} ]}( $class )" );
+            $self->log( 'info' => "run @{[ $plugin->{name} ]} ( $class )" );
         }
         $class->new(
             {   config  => $plugin->{ config },
