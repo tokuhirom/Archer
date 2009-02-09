@@ -24,7 +24,12 @@ sub new {
         my $config_loader = Archer::ConfigLoader->new;
         $self->{ config } = $config_loader->load( $opts->{ config_yaml }, $self );
     }
-    $self->{ config }->{ global }->{ log } ||= { level => 'debug' };
+
+    if ( $self->{ log_level } ) {
+        $self->{ config }->{ global }->{ log } = { level => $self->{ log_level } };
+    } else {
+        $self->{ config }->{ global }->{ log } ||= { level => 'debug' };
+    }
 
     Archer->set_context( $self );
 
