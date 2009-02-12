@@ -75,6 +75,7 @@ sub run_hook {
     $args ||= {};
 
     $self->log( 'info' => "run hook $hook" );
+    TASK:
     for my $plugin ( @{ $self->{ config }->{ tasks }->{ $hook } } ) {
         if ( $self->{ skips }->{ $plugin->{ name } } ) {
             $self->log( info => "skipped: $plugin->{name}" );
@@ -97,7 +98,7 @@ sub run_hook {
               $self->log( info =>
                       "skip $args->{server}. because $plugin->{$filter} ne $args->{$filter}"
               );
-              next;
+              next TASK;
           }
         }
 
