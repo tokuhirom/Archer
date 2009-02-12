@@ -94,7 +94,7 @@ sub run_hook {
 
         for my $filter ( qw/ role project / ) {
           if ( $plugin->{ $filter } && $plugin->{ $filter } ne $args->{ $filter } ) {
-              $self->log( debug =>
+              $self->log( info =>
                       "skip $args->{server}. because $plugin->{$filter} ne $args->{$filter}"
               );
               next;
