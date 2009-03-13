@@ -34,10 +34,10 @@ tasks:
 
     - module: Exec::Remote
       name: restart
+      role: app
       config:
         user: root
         command: "if [ -e /etc/init.d/apache ] ; then  /etc/init.d/apache stop; sleep 6; /etc/init.d/apache start; fi"
-        role: app
 
   finalize:
     - module: Notify::IRC
