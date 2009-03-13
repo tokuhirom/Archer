@@ -6,6 +6,7 @@ use Term::ReadLine;
 use POSIX;
 use File::HomeDir;
 use Path::Class;
+use List::MoreUtils qw/uniq/;
 
 sub new {
     my ( $class, $args ) = @_;
@@ -31,7 +32,7 @@ sub run_loop {
    # If there is Term::ReadLine::Gnu, be sure to do : export "PERL_RL=Gnu o=0"
     eval { $term->stifle_history($HISTSIZE); };
 
-    if (@!) {
+    if ($@) {
         $self->{context}
             ->log( 'debug' => "You will need Term::ReadLine::Gnu" );
     }
@@ -51,7 +52,7 @@ sub run_loop {
     print "\n";
 
     eval { $term->WriteHistory($HISTFILE); };
-    if (@!) {
+    if ($@) {
         $self->{context}
             ->log( 'debug' => "perlsh: cannot write history file: $!" );
     }
@@ -96,29 +97,29 @@ sub catch_run {
                 return print "[WARNING] error in your syntax, see help\n";
             }
             my $executed = 0;
+            my %valid_host = map {$_=>1} @{$self->{servers}};
             for my $plugin ( @{ $self->{config}->{tasks}->{process} } ) {
                 next if $plugin->{name} ne $task;
                 $executed = 1;
                 if ( defined $action ) {
                     if ( $action eq "on" ) {
                         my @hosts = split " ", $machines;
-                        for my $host (@hosts) {
-                            $self->process_task( $plugin, $host );
+                        for my $host (uniq @hosts) {
+                            $self->process_task( $plugin, $host ) if $valid_host{$host};
                         }
                     }
                     else {
                         my @roles = split " ", $machines;
+                        my $server_tree = $self->{config}->{projects}->{$self->{context}->{project}};
                         for my $role (@roles) {
-                            for my $host ( @{ $self->{servers}->{$role} } ) {
-                                $self->process_task( $plugin, $host );
+                            for my $host ( @{ $server_tree->{$role} } ) {
+                                $self->process_task( $plugin, $host ) if $valid_host{$host};
                             }
                         }
                     }
                 }
                 else {
-                    for my $host (
-                        @{ $self->{servers}->{ $plugin->{config}->{role} } } )
-                    {
+                    for my $host (@{$self->{servers}}) {
                         $self->process_task( $plugin, $host );
                     }
                 }
@@ -142,11 +143,8 @@ sub process_host {
     my @hosts = split /\s/, $hosts;
 
     # check if hosts are in our config.
-    for my $host (@hosts) {
-        for my $role ( keys %{ $self->{servers} } ) {
-            @hosts = grep ( /$host/, @{ $self->{servers}->{$role} } );
-        }
-    }
+    my %valid_host = map {$_=>1} @{$self->{servers}};
+    @hosts = grep { $valid_host{$_} } @hosts;
 
     if (@hosts) {
         $self->process_command( $cmd, \@hosts );
@@ -159,12 +157,14 @@ sub process_role {
     my @roles      = split /\s/, $roles;
     my @hosts      = ();
     my @inexistant = ();
+    my $server_tree = $self->{config}->{projects}->{$self->{context}->{project}};
+
     for my $role (@roles) {
-        if ( !defined $self->{servers}->{$role} ) {
+        if ( !defined $server_tree->{$role} ) {
             push( @inexistant, $role );
             next;
         }
-        for my $host ( @{ $self->{servers}->{$role} } ) {
+        for my $host ( @{ $server_tree->{$role} } ) {
             push @hosts, $host;
         }
     }
@@ -195,6 +195,7 @@ sub process_command {
             }
         }
     }
+    $hosts = [ sort( uniq(@{$hosts}) ) ];
 
     $manager->run(
         {   elems    => $hosts,
@@ -209,7 +210,7 @@ sub process_command {
 
 sub process_task {
     my ( $self, $plugin, $host ) = @_;
-    my $class = "Archer::Plugin::$plugin->{module}";
+    my $class = ($plugin->{module} =~ /^\+(.+)$/) ? $1 : "Archer::Plugin::$plugin->{module}";
     $class->use or die $@;
     $class->new(
         {   config  => $plugin->{config},

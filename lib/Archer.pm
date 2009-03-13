@@ -44,7 +44,7 @@ sub run {
         # TODO: role support
         require Archer::Shell;
         my @servers
-            = map { @{ $_ } }
+            = uniq map { @{ $_ } }
             values
             %{ $context->{ config }->{ projects }->{ $self->{ project } } };
         my $shell = Archer::Shell->new(
