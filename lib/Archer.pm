@@ -1,6 +1,7 @@
 package Archer;
 use strict;
 use warnings;
+use 5.008001;
 use Carp;
 use List::MoreUtils qw/uniq/;
 use Archer::ConfigLoader;
@@ -207,11 +208,20 @@ This is yet another deployment tool :)
 
 =head1 AUTHORS
 
-Tokuhiro Matsuno and Archer committers.
+Tokuhiro Matsuno and Archer comitters.
 
 =head1 TODO
 
 =head1 SEE ALSO
 
 L<capistrano>
+
+=head1 LICENSE
+
+Copyright (C) Tokuhiro Matsuno
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
 

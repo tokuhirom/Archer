@@ -8,7 +8,7 @@ use Path::Class;
 use FindBin;
 
 my $yaml_class;
-if (eval "require YAML::Syck; 1;") {
+if (eval "require YAML::Syck; 1;") { ## no critic.
     $yaml_class = "YAML::Syck";
 } else {
     require YAML;
