@@ -1,4 +1,5 @@
 .gitignore
+archer.pl
 assets/kwalify/schema.yaml
 assets/recipe/Deploy
 AUTHORS

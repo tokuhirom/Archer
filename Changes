@@ -1,5 +1,21 @@
 Revision history for Archer
 
+0.07
+
+    * b3ab89f re-packaging
+    * 5fbafad use_test_base sucks
+    * 08c7ad2  shellモードの {on,with} ... do ... 形式と !task {on,with} ...形式が動くよ うにした。 テストコードも追加。
+    * dd059b7 'role' should be here :p
+    * 97e332b ネストしたforループの罠にハマった
+    * 2dcb78c fixed log level.
+    * 2277280 added with option for do deploy with skip_default tasks.
+    * 9cc7ea9 added skip_default setting for none-always-need task.
+    * 7cc348c not $plugin but $args.
+    * 62d4b85 fixed indent.
+    * afbe53f added --log_level option for debuging setting.
+    * 6e6a6ef added only feature.
+    * 2fc1822 Added project filter for project only task. Tweaked info message.
+
 0.06
 
     - added YAML::Syck support

@@ -16,7 +16,6 @@
 ^tools/
 \.svn/
 ^[^/]+\.yaml$
-^[^/]+\.pl$
 ^\.shipit$
 \.sw[po]$
 ^Build$
