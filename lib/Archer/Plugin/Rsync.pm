@@ -44,8 +44,8 @@ sub run {
 
     $rsync->exec;
 
-    $self->log( debug => $rsync->out ) if $rsync->out;
-    $self->log( debug => $rsync->err ) if $rsync->err;
+    $self->log( debug => join('', $rsync->out) ) if () = $rsync->out;
+    $self->log( debug => join('', $rsync->err) ) if () = $rsync->err;
 }
 
 1;
