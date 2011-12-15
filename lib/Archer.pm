@@ -7,7 +7,7 @@ use List::MoreUtils qw/uniq/;
 use Archer::ConfigLoader;
 use UNIVERSAL::require;
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 my $context;
 sub context { $context }

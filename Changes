@@ -1,5 +1,19 @@
 Revision history for Archer
 
+0.08
+
+    commit 239829c5d2fd0a15abdbecbe593146c466905c3c
+    Author: Masayuki Matsuki <y.songmu@gmail.com>
+    Date:   Wed Dec 14 19:13:15 2011 +0900
+
+    stringify $rsync->out and $rsync->err for log.
+
+    File::Rsync::out and File::Rsync::err retruns array in array context,
+    and retruns array ref in scalar context.
+
+    lib/Archer/Plugin/Rsync.pm |    4 ++--
+    1 files changed, 2 insertions(+), 2 deletions(-)
+
 0.07
 
     * b3ab89f re-packaging
