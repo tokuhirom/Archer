@@ -55,10 +55,13 @@ mapping:
               "name":
                 type: str
                 required: true
+              "skip_default":
+                type: bool
+                required: no
               "config":
                 type: any
               "role":
-                type: str    
+                type: any
       process:
         type: seq
         sequence:
@@ -76,7 +79,7 @@ mapping:
               "config":
                 type: any
               "role":
-                type: str    
+                type: any
       finalize:
         type: seq
         sequence:
@@ -88,10 +91,13 @@ mapping:
               "name":
                 type: str
                 required: true
+              "skip_default":
+                type: bool
+                required: no
               "config":
                 type: any
               "role":
-                type: str    
+                type: any
 
   "projects":
     name: list of projects
