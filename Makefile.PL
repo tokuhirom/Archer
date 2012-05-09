@@ -24,7 +24,7 @@ requires 'YAML'                  => 0;
 requires 'Net::SSH'              => 0;
 requires 'Term::ReadLine'        => 0;
 requires 'File::Util';
-requires 'IO::Prompt';
+requires 'IO::Prompt::Simple';
 requires 'Kwalify';
 requires 'File::HomeDir';
 
