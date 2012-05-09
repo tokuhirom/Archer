@@ -95,11 +95,14 @@ sub run_hook {
         }
 
         for my $filter ( qw/ role project / ) {
-          if ( $plugin->{ $filter } && $plugin->{ $filter } ne $args->{ $filter } ) {
+          if ( my $data = $plugin->{ $filter } ) {
+            my @datas = ref $data eq 'ARRAY' ? @$data : ($data);
+            unless ( grep {$_ eq $args->{ $filter }} @datas ) {
               $self->log( info =>
-                      "skip $args->{server}. because $plugin->{$filter} ne $args->{$filter}"
+                qq{skip $args->{server}. because "@{[join ' ', @datas]}" is not match $args->{$filter}}
               );
               next TASK;
+            }
           }
         }
 
