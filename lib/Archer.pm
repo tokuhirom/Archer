@@ -99,7 +99,7 @@ sub run_hook {
             my @datas = ref $data eq 'ARRAY' ? @$data : ($data);
             unless ( grep {$_ eq $args->{ $filter }} @datas ) {
               $self->log( info =>
-                qq{skip $args->{server}. because "@{[join ' ', @datas]}" is not match $args->{$filter}}
+                qq{skip $args->{server}. because "@{[join ' ', @datas]}" doesn't match $args->{$filter}}
               );
               next TASK;
             }

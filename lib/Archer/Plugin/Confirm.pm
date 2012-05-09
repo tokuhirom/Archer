@@ -15,7 +15,7 @@ sub run {
     my $timeout = $self->{config}->{timeout} || 0;
     my $latest_alarm = alarm $timeout;
 
-    if ( IO::Prompt::Simple::prompt( $msg, { anyone => [qw/y n/] } ) ) {
+    if ( lc(IO::Prompt::Simple::prompt( $msg )) =~ /\Ay(?:es)?\z/ms ) {
         alarm $latest_alarm;
         $self->log(debug => "yes");
     }
