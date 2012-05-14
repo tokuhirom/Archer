@@ -1,0 +1,22 @@
+global:
+  work_dir: /tmp
+
+tasks:
+  process:
+   - module: +t::Plugin::Dummy
+     name: dummy
+     config: ~
+
+   - module: +t::Plugin::Print
+     name: test
+     config:
+       command: hostname
+
+projects:
+  YourProj:
+    app:
+      - 127.0.0.1
+      - 127.0.0.2
+    db:
+      - 127.0.0.3
+      - 127.0.0.4

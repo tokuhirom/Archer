@@ -27,6 +27,7 @@ Getopt::Long::GetOptions(
     '+--log_level=s'  => \my $log_level,
     '--config=s'     => \$config,
     '--write-config' => \my $wc,
+    '--role=s'       => \my $role,
 ) or pod2usage( 2 );
 Getopt::Long::Configure( "bundling" );    # allows -p
 pod2usage( -verbose => 2 ) if $man;
@@ -50,6 +51,7 @@ if ( !@ARGV ) {
                 config_yaml => $config,
                 argv_str    => $argv_str,
                 shell       => $shell,
+                role        => $role,
             }
         )->run;
         exit;
@@ -60,6 +62,7 @@ if ( !@ARGV ) {
                 dry_run_fg   => $dry_run_fg,
                 config_yaml  => $config,
                 write_config => $wc,
+                role         => $role,
             }
         )->run;
         exit;
@@ -80,6 +83,7 @@ for my $proj ( @ARGV ) {
             argv_str     => $argv_str,
             shell        => $shell,
             write_config => $wc,
+            role         => $role,
         }
     )->run;
 }

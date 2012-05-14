@@ -42,12 +42,18 @@ sub run {
 
     if ( $self->{ shell } ) {
 
-        # TODO: role support
         require Archer::Shell;
-        my @servers
-            = uniq map { @{ $_ } }
-            values
-            %{ $context->{ config }->{ projects }->{ $self->{ project } } };
+
+        my $server_tree = $self->{config}->{projects}->{$self->{project}};
+        my @servers;
+        while ( my ( $role, $servers ) = each %$server_tree ) {
+            next if $self->{role} && $self->{role} ne $role;
+            for my $server ( @$servers ) {
+                push @servers, $server;
+            }
+        }
+        @servers = uniq @servers;
+
         my $shell = Archer::Shell->new(
             {   context => $self,
                 config  => $self->{ config },
@@ -137,6 +143,7 @@ sub run_process {
 
     my @elems;
     while ( my ( $role, $servers ) = each %$server_tree ) {
+        next if $self->{role} && $self->{role} ne $role;
         for my $server ( @$servers ) {
             push @elems, { server => $server, role => $role };
         }
