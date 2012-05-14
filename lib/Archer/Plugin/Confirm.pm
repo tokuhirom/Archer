@@ -2,7 +2,7 @@ package Archer::Plugin::Confirm;
 use strict;
 use warnings;
 use base qw/Archer::Plugin/;
-use IO::Prompt;
+use IO::Prompt::Simple qw/prompt/;
 
 sub run {
     my ($self,) = @_;
@@ -15,7 +15,7 @@ sub run {
     my $timeout = $self->{config}->{timeout} || 0;
     my $latest_alarm = alarm $timeout;
 
-    if ( IO::Prompt::prompt( $msg, '-yn' ) ) {
+    if ( lc(prompt( $msg )) =~ /\Ay(?:es)?\z/ms ) {
         alarm $latest_alarm;
         $self->log(debug => "yes");
     }
