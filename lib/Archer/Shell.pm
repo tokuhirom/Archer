@@ -179,22 +179,7 @@ sub process_command {
     my ( $self, $cmd, $hosts ) = @_;
     my $manager = $self->{parallel}->new;
 
-    if ( !$hosts ) {
-        for my $role (
-            keys
-            %{ $self->{config}->{projects}->{ $self->{context}->{project} } }
-            )
-        {
-            for my $host (
-                @{  $self->{config}->{projects}
-                        ->{ $self->{context}->{project} }->{$role}
-                }
-                )
-            {
-                push @{$hosts}, $host;
-            }
-        }
-    }
+    $hosts ||= $self->{servers};
     $hosts = [ sort( uniq(@{$hosts}) ) ];
 
     $manager->run(
