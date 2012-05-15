@@ -42,12 +42,18 @@ sub run {
 
     if ( $self->{ shell } ) {
 
-        # TODO: role support
         require Archer::Shell;
-        my @servers
-            = uniq map { @{ $_ } }
-            values
-            %{ $context->{ config }->{ projects }->{ $self->{ project } } };
+
+        my $server_tree = $self->{config}->{projects}->{$self->{project}};
+        my @servers;
+        while ( my ( $role, $servers ) = each %$server_tree ) {
+            next if $self->{role} && $self->{role} ne $role;
+            for my $server ( @$servers ) {
+                push @servers, $server;
+            }
+        }
+        @servers = uniq @servers;
+
         my $shell = Archer::Shell->new(
             {   context => $self,
                 config  => $self->{ config },
@@ -95,11 +101,14 @@ sub run_hook {
         }
 
         for my $filter ( qw/ role project / ) {
-          if ( $plugin->{ $filter } && $plugin->{ $filter } ne $args->{ $filter } ) {
+          if ( my $data = $plugin->{ $filter } ) {
+            my @datas = ref $data eq 'ARRAY' ? @$data : ($data);
+            unless ( grep {$_ eq $args->{ $filter }} @datas ) {
               $self->log( info =>
-                      "skip $args->{server}. because $plugin->{$filter} ne $args->{$filter}"
+                qq(skip $args->{server}. because "@{[join ' ', @datas]}" doesn't match $args->{$filter})
               );
               next TASK;
+            }
           }
         }
 
@@ -134,6 +143,7 @@ sub run_process {
 
     my @elems;
     while ( my ( $role, $servers ) = each %$server_tree ) {
+        next if $self->{role} && $self->{role} ne $role;
         for my $server ( @$servers ) {
             push @elems, { server => $server, role => $role };
         }

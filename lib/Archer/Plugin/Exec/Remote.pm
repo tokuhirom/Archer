@@ -6,7 +6,7 @@ use base qw/Archer::Plugin::Exec/;
 sub _execute {
     my ($self, $cmd, $args) = @_;
 
-    my $real_command = "ssh $self->{server} $cmd";
+    my $real_command = "ssh -t $self->{server} $cmd";
     $real_command = "sudo -u $self->{config}->{user} $real_command" if $self->{config}->{user};
     $self->log(debug => "real execute: $real_command");
 
