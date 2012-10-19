@@ -1,4 +1,8 @@
 Revision history for Archer
+0.10
+
+    - hide from pause SVN::Agent
+
 0.09
 
     - add feature to specify multi roles in config.yaml

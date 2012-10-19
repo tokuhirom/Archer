@@ -5,7 +5,8 @@ use warnings;
 use base qw( Archer::Plugin );
 
 
-package SVN::Agent;
+package # hide from pause
+    SVN::Agent;
 
 sub log {
     my ( $self, @args ) = @_;
