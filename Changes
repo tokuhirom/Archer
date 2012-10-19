@@ -1,4 +1,10 @@
 Revision history for Archer
+0.09
+
+    - add feature to specify multi roles in config.yaml
+    - use IO::Prompt::Simple instead of IO::Prompt, because IO::Prompt doesn't work in perl-5.14 after.
+    - add feature to specify role in command line option
+    - role support in Archer::Schell
 
 0.08
 
