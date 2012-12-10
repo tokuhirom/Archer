@@ -1,4 +1,9 @@
 Revision history for Archer
+0.11
+    - add install_script `archer`
+    - fix shebang in archer.pl and arher
+    - set default assets path to share_dir
+
 0.10
 
     - hide from pause SVN::Agent
