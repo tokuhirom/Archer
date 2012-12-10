@@ -45,6 +45,7 @@ features(
 
 author_tests 'xt';
 install_script('archer.pl');
+install_script('archer');
 
 WriteAll;
 
