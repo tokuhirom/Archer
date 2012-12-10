@@ -1,4 +1,5 @@
 .gitignore
+archer
 archer.pl
 assets/kwalify/schema.yaml
 assets/recipe/Deploy
@@ -14,6 +15,7 @@ inc/Module/Install/Fetch.pm
 inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
 inc/Module/Install/Scripts.pm
+inc/Module/Install/Share.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 lib/Archer.pm

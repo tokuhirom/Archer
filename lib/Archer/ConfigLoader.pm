@@ -3,9 +3,10 @@ use strict;
 use warnings;
 use Storable;
 use Carp;
-use Kwalify qw(validate); 
+use Kwalify qw(validate);
 use Path::Class;
 use FindBin;
+use File::ShareDir qw/dist_dir/;
 
 my $yaml_class;
 if (eval "require YAML::Syck; 1;") { ## no critic.
@@ -41,7 +42,12 @@ sub load {
     }
 
     # setup default value
-    $config->{global}->{assets_path} ||= file( $FindBin::Bin, 'assets')->stringify;
+    $config->{global}->{assets_path} ||= sub {
+        my $dir = file( $FindBin::Bin, 'assets');
+        return $dir->stringify if -d $dir;
+
+        dist_dir('Archer');
+    }->();
     $context->log('debug' => "assets path: $config->{global}->{assets_path}");
 
     # verify

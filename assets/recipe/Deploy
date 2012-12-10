@@ -4,4 +4,4 @@
 mkdir [% dest_dir %]/[% current_date %]
 rm [% dest_dir %]/current
 ln -s [% dest_dir %]/[% current_date %] [% dest_dir %]/current
-rsync -auvz --excl[ude=.svn/ -e ssh --delete [% work_dir %]/ [% server %]:[% dest_dir %]/current
+rsync -auvz --exclude=.svn/ -e ssh --delete [% work_dir %]/ [% server %]:[% dest_dir %]/current
