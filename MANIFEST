@@ -45,6 +45,8 @@ t/02_shell.t
 t/02_shell.yaml
 t/03_role.t
 t/03_role.yaml
+t/04_exec.t
+t/04_exec.yaml
 t/Plugin/Dummy.pm
 t/Plugin/Print.pm
 xt/01_podspell.t
