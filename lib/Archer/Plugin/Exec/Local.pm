@@ -10,7 +10,11 @@ sub _execute {
     my $real_command = $user ? "sudo -u $user $cmd " : $cmd;
     $self->log(debug => "real execute: $real_command");
 
-    system $real_command; # XXX security!!!
+    my $exit_code = system $real_command; # XXX security!!!
+
+    if ($self->{config}{validate} && $exit_code != 0) {
+        $self->detach("Exit code: $exit_code! Command validation failed! Deployment is cancelled.");
+    }
 }
 
 1;

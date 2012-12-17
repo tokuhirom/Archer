@@ -1,0 +1,28 @@
+global:
+  work_dir: /tmp
+
+tasks:
+  init:
+   - module: Exec::Local
+     name: test1
+     config:
+       command: "perl -e 'die q{continue!!!}'"
+   - module: +t::Plugin::Dummy
+     name: dummy
+     config: ~
+   - module: Exec::Local
+     name: test2
+     config:
+       command: "perl -e 'die q{stop!!!}'"
+       validate: 1
+
+  process:
+   - module: +t::Plugin::Dummy
+     name: dummy
+     config: ~
+
+projects:
+  YourProj:
+    app:
+      - 127.0.0.1
+      - 127.0.0.2
