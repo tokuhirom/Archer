@@ -33,3 +33,5 @@ perltidy.ERR$
 \b\.gitignore
 \.bak$
 ^Archer-
+TODO
+tmp/
