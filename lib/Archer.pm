@@ -64,6 +64,7 @@ sub run {
         $shell->run_loop;
     }
     elsif ( $self->{ write_config } ) {
+        # XXX: There is no Archer::Util!!!
         require Archer::Util;
         my $util = Archer::Util->new;
         $util->templatize( $self );
