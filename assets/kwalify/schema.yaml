@@ -62,6 +62,24 @@ mapping:
                 type: any
               "role":
                 type: any
+      ready:
+        type: seq
+        sequence:
+          - type: map
+            mapping:
+              "module":
+                type: str
+                required: true
+              "name":
+                type: str
+                required: true
+              "skip_default":
+                type: bool
+                required: no
+              "config":
+                type: any
+              "role":
+                type: any
       process:
         type: seq
         sequence:

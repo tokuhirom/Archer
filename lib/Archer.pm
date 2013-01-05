@@ -71,6 +71,7 @@ sub run {
     }
     else {
         $self->run_hook( 'init' );
+        $self->run_hook( 'ready' );
 
         $self->run_process;
 
@@ -90,7 +91,7 @@ sub run_hook {
             next;
         }
 
-        if ( $hook eq 'process' && $self->{ only } ) {
+        if ( $hook =~ /^(?:process|ready)$/ && $self->{ only } ) {
             if ( $self->{only} ne $plugin->{ name } ) {
                 $self->log( debug => "skipped: $plugin->{name}" );
                 next;
