@@ -169,7 +169,6 @@ sub bootstrap {
     return $self;
 }
 
-# TODO: use the Log::Dispatch?
 sub log {
     my ( $self, $level, $msg, %opt ) = @_;
 

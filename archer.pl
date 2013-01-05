@@ -109,11 +109,6 @@ __END__
 
 Automating Application Deployment.
 
-=head1 TODO
-
-    logging.
-    para=half.
-
 =head1 TIPS
 
 add to .zshrc.
@@ -122,4 +117,4 @@ add to .zshrc.
 
 =head1 AUTHORS
 
-Tokuhiro Matsuno <tokuhiro at mobilefactory.jp>.
+Tokuhiro Matsuno
