@@ -47,8 +47,11 @@ t/03_role.t
 t/03_role.yaml
 t/04_exec.t
 t/04_exec.yaml
+t/05_ready.t
+t/05_ready.yaml
 t/Plugin/Dummy.pm
 t/Plugin/Print.pm
+t/Util.pm
 xt/01_podspell.t
 xt/02_perlcritic.t
 xt/03_pod.t

@@ -1,4 +1,10 @@
 Revision history for Archer
+0.13
+    - add 'ready' phase.
+    - appropriately handling when specified several values in --skip and --with.
+    - remove old descriptions.
+    - refactor tests.
+
 0.12
     - add validate feature in Plugin::Exec::Local.
     - depend to Test::More 0.98.
