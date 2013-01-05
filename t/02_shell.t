@@ -6,12 +6,10 @@ use Test::More;
 eval "use IO::Scalar;";
 plan skip_all => 'this test requires IO::Scalar' if $@;
 
-plan tests => 8;
-
 use Archer;
 use Archer::Shell;
 use Archer::Parallel::ForkManager;
-use FindBin;
+use t::Util;
 use List::MoreUtils qw/uniq/;
 
 no warnings 'redefine';
@@ -21,51 +19,34 @@ local *Archer::Shell::callback = sub {
 };
 use warnings 'redefine';
 
-my $OUT;
+init;
 
-sub capture(&) {
-    my $code = shift;
+my $archer = Archer->new({
+    project      => 'YourProj',
+    dry_run_fg   => 0,
+    parallel_num => 0,
+    skips        => {},
+    config_yaml  => 't/02_shell.yaml',
+    argv_str     => '',
+    shell        => 1,
+    write_config => 0,
+    log_level    => 'error',
+});
 
-    $OUT = undef;
-    tie *STDOUT, 'IO::Scalar', \$OUT;
-
-    eval { $code->(); };
-    if ($@) {
-        warn "capture: $@";
-    }
-
-    untie *STDOUT;
-}
-
-$FindBin::Bin .= "/..";
-
-my $archer =
-    Archer->new(
-        {
-            project      => 'YourProj',
-            dry_run_fg   => 0,
-            parallel_num => 0,
-            skips        => {},
-            config_yaml  => 't/02_shell.yaml',
-            argv_str     => '',
-            shell        => 1,
-            write_config => 0,
-            log_level    => 'error',
-        }
-       );
 my $context = $archer->context;
 
 my @servers
     = uniq map { @{ $_ } }
+    sort
     values
     %{ $context->{ config }->{ projects }->{ $archer->{ project } } };
-my $shell = Archer::Shell->new(
-    {   context => $archer,
-        config  => $archer->{ config },
-        servers => \@servers,
-        parallel => "Archer::Parallel::ForkManager",
-    }
-   );
+
+my $shell = Archer::Shell->new({
+    context => $archer,
+    config  => $archer->{ config },
+    servers => \@servers,
+    parallel => "Archer::Parallel::ForkManager",
+});
 
 
 my @app = qw(127.0.0.1 127.0.0.2);
@@ -96,3 +77,5 @@ is($OUT, join("\n",map{"$_:hostname"}@app)."\n", "task with role");
 
 capture { $shell->catch_run("!test with app db"); };
 is($OUT, join("\n",map{"$_:hostname"}@app,@db)."\n", "task with role role");
+
+done_testing;
