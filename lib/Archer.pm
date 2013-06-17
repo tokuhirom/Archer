@@ -7,7 +7,7 @@ use List::MoreUtils qw/uniq/;
 use Archer::ConfigLoader;
 use UNIVERSAL::require;
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 my $context;
 sub context { $context }
@@ -219,7 +219,7 @@ This is yet another deployment tool :)
 
 =head1 AUTHORS
 
-Tokuhiro Matsuno and Archer comitters.
+Tokuhiro Matsuno and Archer contributors.
 
 =head1 TODO
 

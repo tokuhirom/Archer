@@ -1,0 +1,95 @@
+{
+   "abstract" : "yet another deployment tool",
+   "author" : [
+      "Tokuhiro Matsuno and Archer contributors."
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Minilla/v0.5.3, CPAN::Meta::Converter version 2.120921",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Archer",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "xt",
+         "inc",
+         "share",
+         "eg",
+         "examples",
+         "author"
+      ]
+   },
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "CPAN::Meta" : "0",
+            "CPAN::Meta::Prereqs" : "0",
+            "Module::Build" : "0.38"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Test::CPAN::Meta" : "0",
+            "Test::MinimumVersion" : "0.10108",
+            "Test::Pod" : "1.41",
+            "Test::Spellunker" : "v0.2.7"
+         }
+      },
+      "runtime" : {
+         "recommends" : {
+            "MySQL::Diff" : "0",
+            "SVN::Agent" : "0"
+         },
+         "requires" : {
+            "File::HomeDir" : "0",
+            "File::Rsync" : "0",
+            "File::ShareDir" : "0",
+            "File::Util" : "0",
+            "IO::Prompt::Simple" : "0",
+            "Kwalify" : "0",
+            "List::MoreUtils" : "0",
+            "Net::SSH" : "0",
+            "Parallel::ForkManager" : "0",
+            "Path::Class" : "0",
+            "String::CamelCase" : "0",
+            "Template" : "0",
+            "Term::ANSIColor" : "0",
+            "UNIVERSAL::require" : "0",
+            "YAML" : "0",
+            "perl" : "5.008001"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::More" : "0"
+         }
+      }
+   },
+   "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/tokuhirom/Archer/issues"
+      },
+      "homepage" : "https://github.com/tokuhirom/Archer",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/tokuhirom/Archer.git",
+         "web" : "https://github.com/tokuhirom/Archer"
+      }
+   },
+   "version" : "0.14",
+   "x_contributors" : [
+      "otsune <otsune@d0d07461-0603-4401-acd4-de1884942a52>",
+      "mizzy <mizzy@d0d07461-0603-4401-acd4-de1884942a52>",
+      "walf443 <walf443@d0d07461-0603-4401-acd4-de1884942a52>",
+      "tokuhirom <tokuhirom@d0d07461-0603-4401-acd4-de1884942a52>",
+      "hirose31 <hirose31@d0d07461-0603-4401-acd4-de1884942a52>",
+      "Masayuki Matsuki <y.songmu@gmail.com>",
+      "tokuhirom <tokuhirom@gmail.com>"
+   ]
+}

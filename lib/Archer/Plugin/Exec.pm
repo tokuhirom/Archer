@@ -58,7 +58,7 @@ Archer::Plugin::Exec - run the command in ...
 
 =head1 DESCRIPTION
 
-mmm...
+Base class for executing commands.
 
 =head1 AUTHORS
 

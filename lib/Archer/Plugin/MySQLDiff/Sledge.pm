@@ -37,7 +37,7 @@ __END__
 
 =head1 NAME
 
-Archer::Plugin::MySQLDiff::Sledge - show the mysqldiff, with sledge's configuration class.
+Archer::Plugin::MySQLDiff::Sledge - show the MySQL Diff, with sledge's configuration class.
 
 =head1 SYNOPSIS
 

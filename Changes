@@ -1,4 +1,13 @@
 Revision history for Archer
+
+{{$NEXT}}
+
+0.14 2013-06-17T12:06:02Z
+    - Switch to Minilla
+    - Fixup dependencies
+    - move script files to bin
+    - fix typo in documents
+
 0.13
     - add 'ready' phase.
     - appropriately handling when specified several values in --skip and --with.

@@ -53,7 +53,7 @@ __END__
 
 =head1 NAME
 
-Archer::Plugin::Rsync - execute rsync.
+Archer::Plugin::Rsync - execute Rsync.
 
 =head1 SYNOPSIS
 
@@ -72,7 +72,7 @@ Archer::Plugin::Rsync - execute rsync.
 
 =head1 DESCRIPTION
 
-Execute rsync.
+Execute Rsync.
 
 =head1 CONFIG
 

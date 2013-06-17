@@ -1,4 +1,4 @@
-#!/usr/bin/env perl
+#!perl
 use strict;
 use warnings;
 
@@ -9,13 +9,13 @@ use Path::Class;
 use File::Util;
 use Cwd;
 
-use lib dir( $FindBin::RealBin, 'lib' )->stringify;
+use lib dir( $FindBin::RealBin, '..', 'lib' )->stringify;
 
 use Archer;
 
 my $argv_str = "@ARGV";
 my $fork_num = 1;
-my $config   = file( $FindBin::RealBin, 'config.yaml' )->stringify;
+my $config   = file( $FindBin::RealBin, '..', 'config.yaml' )->stringify;
 Getopt::Long::GetOptions(
     '--para=i'       => \$fork_num,
     '--dry-run'      => \my $dry_run_fg,

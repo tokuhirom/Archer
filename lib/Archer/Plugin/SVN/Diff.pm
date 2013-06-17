@@ -26,7 +26,7 @@ __END__
 
 =head1 NAME
 
-Archer::Plugin::SVN::Diff - svn diff
+Archer::Plugin::SVN::Diff - svn Diff
 
 =head1 SYNOPSIS
 
@@ -36,7 +36,7 @@ Archer::Plugin::SVN::Diff - svn diff
 
 =head1 DESCRIPTION
 
-Execute svn diff.
+Execute svn Diff.
 
 =head1 CONFIG
 
