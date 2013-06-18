@@ -42,12 +42,12 @@
       },
       "runtime" : {
          "recommends" : {
+            "File::Rsync" : "0",
             "MySQL::Diff" : "0",
             "SVN::Agent" : "0"
          },
          "requires" : {
             "File::HomeDir" : "0",
-            "File::Rsync" : "0",
             "File::ShareDir" : "0",
             "File::Util" : "0",
             "IO::Prompt::Simple" : "0",
@@ -89,7 +89,7 @@
       "walf443 <walf443@d0d07461-0603-4401-acd4-de1884942a52>",
       "tokuhirom <tokuhirom@d0d07461-0603-4401-acd4-de1884942a52>",
       "hirose31 <hirose31@d0d07461-0603-4401-acd4-de1884942a52>",
-      "Masayuki Matsuki <y.songmu@gmail.com>",
-      "tokuhirom <tokuhirom@gmail.com>"
+      "tokuhirom <tokuhirom@gmail.com>",
+      "Masayuki Matsuki <y.songmu@gmail.com>"
    ]
 }
