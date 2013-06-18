@@ -54,28 +54,27 @@ my @db  = qw(127.0.0.3 127.0.0.4);
 my @all = (@app, @db);
 
 capture { $shell->catch_run("date"); };
-is($OUT, join("\n",map{"$_:date"}@all)."\n","command");
+is_valid_output($OUT, [map{"$_:date"}@all], 'command');
 
 capture { $shell->catch_run("on 127.0.0.0 127.0.0.2 127.0.0.2 do date"); };
-is($OUT, join("\n",map{"$_:date"}qw(127.0.0.2))."\n", "on host do command");
+is_valid_output($OUT, [map{"$_:date"}qw(127.0.0.2)], "on host do command");
 
 capture { $shell->catch_run("with app do uname"); };
-is($OUT, join("\n",map{"$_:uname"}@app)."\n", "with role do command");
+is_valid_output($OUT, [map{"$_:uname"}@app], "with role do command");
 
 capture { $shell->catch_run("with app db do w"); };
-is($OUT, join("\n",map{"$_:w"}@app,@db)."\n", "with role role do command");
-
+is_valid_output($OUT, [map{"$_:w"}@app,@db], "with role role do command");
 
 capture { $shell->catch_run("!test"); };
-is($OUT, join("\n",map{"$_:hostname"}@all)."\n", "task");
+is_valid_output($OUT, [map{"$_:hostname"}@all], "task");
 
 capture { $shell->catch_run("!test on 127.0.0.0 127.0.0.2 127.0.0.2"); };
-is($OUT, join("\n",map{"$_:hostname"}qw(127.0.0.2))."\n", "task on host");
+is_valid_output($OUT, [map{"$_:hostname"}qw(127.0.0.2)], "task on host");
 
 capture { $shell->catch_run("!test with app"); };
-is($OUT, join("\n",map{"$_:hostname"}@app)."\n", "task with role");
+is_valid_output($OUT, [map{"$_:hostname"}@app], "task with role");
 
 capture { $shell->catch_run("!test with app db"); };
-is($OUT, join("\n",map{"$_:hostname"}@app,@db)."\n", "task with role role");
+is_valid_output($OUT, [map{"$_:hostname"}@app,@db], "task with role role");
 
 done_testing;

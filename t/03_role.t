@@ -29,7 +29,7 @@ subtest 'no role' => sub {
 
     $OUT =~ s/\n$//msg;
     $OUT =~ s/^\n//msg;
-    is($OUT, join("\n",map{"$_:hostname"}@all));
+    is_valid_output($OUT, [map{"$_:hostname"}@all]);
     is $t::Plugin::Dummy::RUN_COUNTER, 4;
 };
 
@@ -51,7 +51,7 @@ subtest 'role app' => sub {
 
     $OUT =~ s/\n$//msg;
     $OUT =~ s/^\n//msg;
-    is($OUT, join("\n",map{"$_:hostname"}@app));
+    is_valid_output($OUT, [map{"$_:hostname"}@app]);
     is $t::Plugin::Dummy::RUN_COUNTER, 2;
 };
 
