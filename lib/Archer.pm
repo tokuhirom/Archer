@@ -65,7 +65,10 @@ sub run {
     }
     elsif ( $self->{ write_config } ) {
         # XXX: There is no Archer::Util!!!
-        require Archer::Util;
+        local $@;
+        eval "require Archer::Util";
+        croak 'There is no Archer::Util!!!' if $@;
+
         my $util = Archer::Util->new;
         $util->templatize( $self );
     }
