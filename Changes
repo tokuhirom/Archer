@@ -17,33 +17,32 @@ Revision history for Archer
     - move script files to bin
     - fix typo in documents
 
-0.13
+0.13 2013-01-05
     - add 'ready' phase.
     - appropriately handling when specified several values in --skip and --with.
     - remove old descriptions.
     - refactor tests.
 
-0.12
+0.12 2012-12-17
     - add validate feature in Plugin::Exec::Local.
     - depend to Test::More 0.98.
 
-0.11
+0.11 2012-12-10
     - add install_script `archer`
     - fix shebang in archer.pl and arher
     - set default assets path to share_dir
 
-0.10
-
+0.10 2012-10-19
     - hide from pause SVN::Agent
 
-0.09
-
+0.09 2012-10-19
     - add feature to specify multi roles in config.yaml
-    - use IO::Prompt::Simple instead of IO::Prompt, because IO::Prompt doesn't work in perl-5.14 after.
+    - use IO::Prompt::Simple instead of IO::Prompt,
+      because IO::Prompt doesn't work in perl-5.14 after.
     - add feature to specify role in command line option
     - role support in Archer::Schell
 
-0.08
+0.08 2011-12-15
 
     commit 239829c5d2fd0a15abdbecbe593146c466905c3c
     Author: Masayuki Matsuki <y.songmu@gmail.com>
@@ -57,48 +56,42 @@ Revision history for Archer
     lib/Archer/Plugin/Rsync.pm |    4 ++--
     1 files changed, 2 insertions(+), 2 deletions(-)
 
-0.07
+0.07 2011-10-19
+    - b3ab89f re-packaging
+    - 5fbafad use_test_base sucks
+    - 08c7ad2  shellモードの {on,with} ... do ... 形式と !task {on,with} ...形式が動くよ うにした。 テストコードも追加。
+    - dd059b7 'role' should be here :p
+    - 97e332b ネストしたforループの罠にハマった
+    - 2dcb78c fixed log level.
+    - 2277280 added with option for do deploy with skip_default tasks.
+    - 9cc7ea9 added skip_default setting for none-always-need task.
+    - 7cc348c not $plugin but $args.
+    - 62d4b85 fixed indent.
+    - afbe53f added --log_level option for debuging setting.
+    - 6e6a6ef added only feature.
+    - 2fc1822 Added project filter for project only task. Tweaked info message.
 
-    * b3ab89f re-packaging
-    * 5fbafad use_test_base sucks
-    * 08c7ad2  shellモードの {on,with} ... do ... 形式と !task {on,with} ...形式が動くよ うにした。 テストコードも追加。
-    * dd059b7 'role' should be here :p
-    * 97e332b ネストしたforループの罠にハマった
-    * 2dcb78c fixed log level.
-    * 2277280 added with option for do deploy with skip_default tasks.
-    * 9cc7ea9 added skip_default setting for none-always-need task.
-    * 7cc348c not $plugin but $args.
-    * 62d4b85 fixed indent.
-    * afbe53f added --log_level option for debuging setting.
-    * 6e6a6ef added only feature.
-    * 2fc1822 Added project filter for project only task. Tweaked info message.
-
-0.06
-
+0.06 2008-10-08
     - added YAML::Syck support
     - specify assets path in config.yaml
 
-0.05
-
+0.05 2008-06-29
     - Plugin::Flock: added
     - Plugin::Confirm: support timeout
     - Plugin::Exec::Remote: do not use sudo when does not specify user name in configuration(by mizzy++)
     - fixed some test problem.
 
-0.04
-
+0.04 2008-01-26
     - fixed test script.
     - no feature changes.
 
-0.03
-
+0.03 2007-21-31
     - fixed test.
     - no feature changes.
 
-0.02
-
+0.02 2007-12-27
     - initial cpan release.
 
-0.01  Fri Oct  6 12:38:02 2006
-       Initial release.
+0.01 2006-10-06 12:38:02
+    - Initial release.
 
