@@ -7,6 +7,7 @@ use Kwalify qw(validate);
 use Path::Class;
 use FindBin;
 use File::ShareDir qw/dist_dir/;
+use File::Spec;
 
 my $yaml_class;
 if (eval "require YAML::Syck; 1;") { ## no critic.
@@ -46,7 +47,7 @@ sub load {
         my $dir = file( $FindBin::Bin, 'assets');
         return $dir->stringify if -d $dir;
 
-        dist_dir('Archer');
+        File::Spec->catdir(dist_dir('Archer'), 'assets');
     }->();
     $context->log('debug' => "assets path: $config->{global}->{assets_path}");
 
