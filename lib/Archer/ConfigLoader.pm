@@ -44,8 +44,10 @@ sub load {
 
     # setup default value
     $config->{global}->{assets_path} ||= sub {
-        my $dir = file( $FindBin::Bin, 'assets');
-        return $dir->stringify if -d $dir;
+        my $dir = File::Spec->catdir( $FindBin::Bin, 'assets');
+        return $dir if -d $dir;
+        $dir = File::Spec->catdir( $FindBin::Bin, 'share', 'assets');
+        return $dir if -d $dir;
 
         File::Spec->catdir(dist_dir('Archer'), 'assets');
     }->();
