@@ -67,7 +67,7 @@ sub run {
         # XXX: There is no Archer::Util!!!
         local $@;
         my $archer_util = 'Archer::Util';
-        eval "require $archer_util;";
+        eval "require $archer_util;"; ## no critic
         croak 'WTF! There is no Archer::Util! And that, Archer dist not contains it!' if $@;
 
         my $util = $archer_util->new;

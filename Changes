@@ -1,6 +1,8 @@
 Revision history for Archer
 
 {{$NEXT}}
+    - restore ShareDir missing in 0.14 and move asset/ to share/asset for Minilla friendly.
+    - add error message of Archer::Util.
 
 0.15 2013-06-18T02:20:51Z
     - fix dependencies
