@@ -2,6 +2,9 @@ Revision history for Archer
 
 {{$NEXT}}
 
+0.17 2013-08-08T12:25:01Z
+    - update Changes to satisfy CPAN::Changes::Spec
+
 0.16 2013-07-25T06:32:29Z
     - fix asset_dir resolving in ConfigLoader
     - restore ShareDir missing in 0.14 and move asset/ to share/asset for Minilla friendly.
