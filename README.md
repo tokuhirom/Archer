@@ -14,7 +14,7 @@ Tokuhiro Matsuno and Archer contributors.
 
 # SEE ALSO
 
-[capistrano](http://search.cpan.org/perldoc?capistrano)
+[capistrano](https://metacpan.org/pod/capistrano)
 
 # LICENSE
 

@@ -4,7 +4,7 @@
       "Tokuhiro Matsuno and Archer contributors."
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.5.6, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Minilla/v2.1.1, CPAN::Meta::Converter version 2.140640",
    "license" : [
       "perl_5"
    ],
@@ -21,7 +21,8 @@
          "share",
          "eg",
          "examples",
-         "author"
+         "author",
+         "builder"
       ]
    },
    "prereqs" : {
@@ -35,7 +36,8 @@
       "develop" : {
          "requires" : {
             "Test::CPAN::Meta" : "0",
-            "Test::MinimumVersion" : "0.10108",
+            "Test::MinimumVersion::Fast" : "0.04",
+            "Test::PAUSE::Permissions" : "0.04",
             "Test::Pod" : "1.41",
             "Test::Spellunker" : "v0.2.7"
          }
@@ -92,6 +94,6 @@
       "hirose31 <hirose31@d0d07461-0603-4401-acd4-de1884942a52>",
       "tokuhirom <tokuhirom@gmail.com>",
       "Neil Bowers <neil@bowers.com>",
-      "Songmu <y.songmu@gmail.com>"
+      "Masayuki Matsuki <y.songmu@gmail.com>"
    ]
 }
