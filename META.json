@@ -85,7 +85,7 @@
          "web" : "https://github.com/tokuhirom/Archer"
       }
    },
-   "version" : "0.17",
+   "version" : "0.18",
    "x_contributors" : [
       "otsune <otsune@d0d07461-0603-4401-acd4-de1884942a52>",
       "mizzy <mizzy@d0d07461-0603-4401-acd4-de1884942a52>",
@@ -94,6 +94,6 @@
       "hirose31 <hirose31@d0d07461-0603-4401-acd4-de1884942a52>",
       "tokuhirom <tokuhirom@gmail.com>",
       "Neil Bowers <neil@bowers.com>",
-      "Masayuki Matsuki <y.songmu@gmail.com>"
+      "Songmu <y.songmu@gmail.com>"
    ]
 }

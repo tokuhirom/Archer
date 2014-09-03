@@ -2,6 +2,9 @@ Revision history for Archer
 
 {{$NEXT}}
 
+0.18 2014-09-03T15:45:22Z
+    - repackageing (fix META.json)
+
 0.17 2013-08-08T12:25:01Z
     - update Changes to satisfy CPAN::Changes::Spec
 
